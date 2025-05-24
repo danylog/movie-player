@@ -5,7 +5,7 @@ import time
 
 # --- Setup ---
 pygame.init()
-WIDTH, HEIGHT = 640, 480  # dein 2.8" DPI Screen
+WIDTH, HEIGHT = 640, 480  # Landscape: width > height
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Mini TV Menü")
 font = pygame.font.Font(None, 30)
@@ -72,11 +72,11 @@ while running:
     end = start + videos_per_page
     for i, video in enumerate(videos[start:end]):
         text = font.render(f"{i+1}. {video}", True, WHITE)
-        screen.blit(text, (20, 50 + i * 30))
+        screen.blit(text, (60, 60 + i * 40))
 
     # --- Pfeile zeichnen (groß & touchbar) ---
-    pygame.draw.polygon(screen, WHITE, [(20, 280), (60, 300), (20, 320)])  # links
-    pygame.draw.polygon(screen, WHITE, [(460, 280), (420, 300), (460, 320)])  # rechts
+    pygame.draw.polygon(screen, WHITE, [(20, HEIGHT//2-40), (60, HEIGHT//2), (20, HEIGHT//2+40)])  # links
+    pygame.draw.polygon(screen, WHITE, [(WIDTH-20, HEIGHT//2-40), (WIDTH-60, HEIGHT//2), (WIDTH-20, HEIGHT//2+40)])  # rechts
 
     pygame.display.flip()
 
@@ -94,19 +94,19 @@ while running:
                 break
 
             # Touch: Links (zurück)
-            if x < 80 and 280 < y < 320:
+            if x < 80 and (HEIGHT//2-40) < y < (HEIGHT//2+40):
                 if current_page > 0:
                     current_page -= 1
 
             # Touch: Rechts (weiter)
-            elif x > 400 and 280 < y < 320:
+            elif x > WIDTH-80 and (HEIGHT//2-40) < y < (HEIGHT//2+40):
                 if (current_page + 1) * videos_per_page < len(videos):
                     current_page += 1
 
             # Touch: Video auswählen
             for i in range(videos_per_page):
-                tx, ty = 20, 50 + i * 30
-                if tx < x < WIDTH and ty < y < ty + 30:
+                tx, ty = 60, 60 + i * 40
+                if tx < x < WIDTH-60 and ty < y < ty + 40:
                     index = start + i
                     if index < len(videos):
                         filename = videos[index]
