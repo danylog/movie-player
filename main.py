@@ -5,7 +5,7 @@ import time
 
 # --- Setup ---
 pygame.init()
-WIDTH, HEIGHT = 640, 480  # Landscape: width > height
+WIDTH, HEIGHT = 640, 480  # Landscape
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Mini TV Menü")
 font = pygame.font.Font(None, 30)
@@ -39,8 +39,18 @@ def double_tap_detected():
     return False
 
 def play_video(filepath):
-    # Start VLC as subprocess and allow double-tap exit while playing
-    proc = subprocess.Popen(["cvlc", "--play-and-exit", "--fullscreen", filepath])
+    # VLC borderless, sized to screen, not true fullscreen
+    proc = subprocess.Popen([
+        "cvlc",
+        "--play-and-exit",
+        "--no-video-deco",
+        "--no-embedded-video",
+        "--video-x=0",
+        "--video-y=0",
+        f"--width={WIDTH}",
+        f"--height={HEIGHT}",
+        filepath
+    ])
     running_video = True
     global last_tap_time
     while running_video:
@@ -52,7 +62,6 @@ def play_video(filepath):
                 if double_tap_detected():
                     proc.terminate()
                     return False
-        # Optional: update a "playing..." overlay
         pygame.time.wait(50)
         if proc.poll() is not None:  # VLC exited
             running_video = False
