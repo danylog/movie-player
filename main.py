@@ -19,7 +19,7 @@ YELLOW = (255, 255, 0)
 VIDEO_FOLDER = "/home/pi/tvprojekt/videos"
 if not os.path.exists(VIDEO_FOLDER):
     os.makedirs(VIDEO_FOLDER)
-videos = [f for f in os.listdir(VIDEO_FOLDER) if f.endswith(".mp4")]
+videos = [f for f in os.listdir(VIDEO_FOLDER) if (f.endswith(".mp4")) or (f.endswith(".mov")) or (f.endswith(".mkv"))]
 videos.sort()
 
 # --- Seiten ---
