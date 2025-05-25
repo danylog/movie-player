@@ -2,6 +2,7 @@ import pygame
 import os
 import subprocess
 import time
+import getpass
 
 # --- Setup ---
 pygame.init()
@@ -62,6 +63,11 @@ def play_video(filepath):
             running_video = False
     return True
 
+def fix_runtime_dir_permissions():
+    runtime_dir = f"/run/user/{os.getuid()}"
+    if os.path.exists(runtime_dir):
+        os.chmod(runtime_dir, 0o700)
+
 # --- Hauptloop ---
 running = True
 while running:
@@ -115,6 +121,7 @@ while running:
                     if index < len(videos):
                         filename = videos[index]
                         filepath = os.path.join(VIDEO_FOLDER, filename)
+                        fix_runtime_dir_permissions()  # Fix permissions before playing video
                         still_running = play_video(filepath)
                         if not still_running:
                             running = False
