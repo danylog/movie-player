@@ -42,12 +42,14 @@ def double_tap_detected():
 def play_video(filepath):
     proc = subprocess.Popen([
         "mpv",
-        "--fs",              # Fullscreen
-        "--no-border",       # No window border
-        "--ontop",           # Stay on top
-        "--really-quiet",    # No console output
-
-        "--osc=no",          # (Optional) Hide on-screen controls
+        "--fs",                    # Fullscreen
+        "--no-border",             # No window border
+        "--ontop",                 # Stay on top
+        "--really-quiet",          # No console output
+        "--osc=no",                # (Optional) Hide on-screen controls
+        "--keepaspect=yes",        # Keep video aspect ratio
+        "--keepaspect-window=yes", # Keep aspect ratio for the window
+        "--background=black",      # Fill unused space with black
         filepath
     ])
     running_video = True
