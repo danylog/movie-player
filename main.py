@@ -48,8 +48,7 @@ def play_video(filepath):
         "--really-quiet",          # No console output
         "--osc=no",                # (Optional) Hide on-screen controls
         "--keepaspect=yes",        # Keep video aspect ratio
-        "--keepaspect-window=yes", # Keep aspect ratio for the window
-        "--background=black",      # Fill unused space with black
+        "--no-keepaspect-window", # Keep aspect ratio for the window
         filepath
     ])
     running_video = True
