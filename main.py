@@ -47,6 +47,8 @@ def play_video(filepath):
         "--no-border",
         "--ontop",
         "--really-quiet",
+        "--autofit=640x480",
+        "--osc-scale=2.5",
         filepath
     ])
     running_video = True
