@@ -40,14 +40,14 @@ def double_tap_detected():
     return False
 
 def play_video(filepath):
-    # Launch VLC in true fullscreen mode
     proc = subprocess.Popen([
         "mpv",
-        "--fs",
-        "--no-border",
-        "--ontop",
-        "--really-quiet",
-        "--autofit=640x480",
+        "--fs",              # Fullscreen
+        "--no-border",       # No window border
+        "--ontop",           # Stay on top
+        "--really-quiet",    # No console output
+        "--autofit=100%x100%", # Fit to screen size
+        "--osc=no",          # (Optional) Hide on-screen controls
         filepath
     ])
     running_video = True
@@ -62,7 +62,7 @@ def play_video(filepath):
                     proc.terminate()
                     return False
         pygame.time.wait(50)
-        if proc.poll() is not None:  # VLC exited
+        if proc.poll() is not None:  # mpv exited
             running_video = False
     return True
 
