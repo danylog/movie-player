@@ -46,7 +46,7 @@ def play_video(filepath):
         "--no-border",       # No window border
         "--ontop",           # Stay on top
         "--really-quiet",    # No console output
-        "--autofit=100%x100%", # Fit to screen size
+        "--autofit=640x480", # Fit to screen size
         "--osc=no",          # (Optional) Hide on-screen controls
         filepath
     ])
