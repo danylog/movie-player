@@ -39,16 +39,11 @@ def double_tap_detected():
     return False
 
 def play_video(filepath):
-    # VLC borderless, sized to screen, not true fullscreen
+    # Launch VLC in true fullscreen mode
     proc = subprocess.Popen([
-        "cvlc",
+        "vlc",
+        "--fullscreen",
         "--play-and-exit",
-        "--no-video-deco",
-        "--no-embedded-video",
-        "--video-x=0",
-        "--video-y=0",
-        f"--width={WIDTH}",
-        f"--height={HEIGHT}",
         filepath
     ])
     running_video = True
