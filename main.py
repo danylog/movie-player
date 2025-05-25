@@ -42,9 +42,11 @@ def double_tap_detected():
 def play_video(filepath):
     # Launch VLC in true fullscreen mode
     proc = subprocess.Popen([
-        "vlc",
-        "--fullscreen",
-        "--play-and-exit",
+        "mpv",
+        "--fs",
+        "--no-border",
+        "--ontop",
+        "--really-quiet",
         filepath
     ])
     running_video = True
