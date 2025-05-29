@@ -44,6 +44,7 @@ def play_video(filepath):
         "mpv",
         "--fs",                    # Fullscreen
         "--no-border",             # No window border
+        "--autofit=640x480",       # Resize to fit screen
         "--ontop",                 # Stay on top
         "--really-quiet",          # No console output
         "--osc=no",                # (Optional) Hide on-screen controls
