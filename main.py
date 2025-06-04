@@ -10,7 +10,7 @@ pygame.init()
 WIDTH, HEIGHT = 640, 480  # Landscape
 screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.FULLSCREEN | pygame.NOFRAME)
 pygame.display.set_caption("Mini TV Menü")
-font = pygame.font.Font(None, 30)
+font = pygame.font.Font(None, 42)
 
 # --- Farben ---
 WHITE = (255, 255, 255)
@@ -77,7 +77,8 @@ def fix_runtime_dir_permissions():
 # --- Hauptloop ---
 running = True
 while running:
-    screen.fill(BLACK)
+     clock.tick(30)
+    screen.fill(BLUE)
 
     # --- Überschrift ---
     title = font.render("== Menü ==", True, YELLOW)
