@@ -77,8 +77,7 @@ def fix_runtime_dir_permissions():
 # --- Hauptloop ---
 running = True
 while running:
-     clock.tick(30)
-    screen.fill(BLUE)
+    screen.fill(BLACK)
 
     # --- Überschrift ---
     title = font.render("== Menü ==", True, YELLOW)
