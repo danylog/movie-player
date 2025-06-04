@@ -4,7 +4,8 @@ import subprocess
 import time
 import getpass
 
-# --- Setup ---
+
+# --- Setup ---asdjhra
 pygame.init()
 WIDTH, HEIGHT = 640, 480  # Landscape
 screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.FULLSCREEN | pygame.NOFRAME)
