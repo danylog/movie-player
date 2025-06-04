@@ -16,6 +16,7 @@ font = pygame.font.Font(None, 42)
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 YELLOW = (255, 255, 0)
+PURPLE = (102, 0, 153) 
 
 # --- Filme laden ---
 VIDEO_FOLDER = "/home/pi/tvprojekt/videos"
@@ -77,7 +78,7 @@ def fix_runtime_dir_permissions():
 # --- Hauptloop ---
 running = True
 while running:
-    screen.fill(BLACK)
+    screen.fill(PURPLE)
 
     # --- Überschrift ---
     title = font.render("== Menü ==", True, YELLOW)
