@@ -7,7 +7,7 @@ import getpass
 # --- Setup ---
 pygame.init()
 WIDTH, HEIGHT = 640, 480  # Landscape
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
+screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.FULLSCREEN | pygame.NOFRAME)
 pygame.display.set_caption("Mini TV Menü")
 font = pygame.font.Font(None, 30)
 
