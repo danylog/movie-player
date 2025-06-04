@@ -127,16 +127,6 @@ while running:
                     if index < len(videos):
                         filename = videos[index]
                         filepath = os.path.join(VIDEO_FOLDER, filename)
-
-
-                         # 1. Feedback: Titel unterstreichen und leuchten
-            text = font.render(f"{i+1}. {filename}", True, YELLOW)
-            pygame.draw.rect(screen, BLACK, (tx, ty, WIDTH-120, 40))  # Clear previous text
-            screen.blit(text, (tx, ty))
-            pygame.display.flip()
-
-
-
                         fix_runtime_dir_permissions()  # Fix permissions before playing video
                         still_running = play_video(filepath)
                         if not still_running:
