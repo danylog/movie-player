@@ -128,6 +128,16 @@ while running:
                         filename = videos[index]
                         filepath = os.path.join(VIDEO_FOLDER, filename)
                         fix_runtime_dir_permissions()  # Fix permissions before playing video
+
+# VISUELLES FEEDBACK HINZUFÜGEN
+            text = font.render(f"{i+1}. {filename}", True, YELLOW)
+            pygame.draw.rect(screen, BLACK, (tx, ty, WIDTH-120, 40))  # Clear previous text
+            screen.blit(text, (tx, ty))
+            pygame.display.flip()
+            pygame.event.pump()
+            time.sleep(0.3)  # 300ms warten, damit man’s sieht
+
+
                         still_running = play_video(filepath)
                         if not still_running:
                             running = False
