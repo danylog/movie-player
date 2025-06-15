@@ -12,18 +12,6 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.FULLSCREEN | pygame.NOF
 pygame.display.set_caption("Mini TV Menü")
 font = pygame.font.Font(None, 42)
 
-# === Intro anzeigen ===
-def show_intro():
-    intro_font = pygame.font.Font(None, 60)
-    intro_text = intro_font.render("Mini TV startet...", True, YELLOW)
-    screen.fill(BLACK)
-    screen.blit(intro_text, (WIDTH//2 - intro_text.get_width()//2, HEIGHT//2 - intro_text.get_height()//2))
-    pygame.display.flip()
-    pygame.time.delay(2000)  # Zeige das Intro für 2 Sekunden
-
-show_intro()
-
-
 # --- Farben ---
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
