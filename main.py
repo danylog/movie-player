@@ -129,12 +129,12 @@ while running:
                         filename = videos[index]
                         filepath = os.path.join(VIDEO_FOLDER, filename)
 
-# --- Highlight angeklickten Text ---
+# --- Highlight angeklickten Text --- hab ich hinzugefügt
                         highlight_text = font.render(f"{i+1}. {filename}", True, YELLOW)
                         pygame.draw.rect(screen, PURPLE, (tx, ty, WIDTH-120, 40))  # Hintergrund säubern
                         screen.blit(highlight_text, (tx, ty))
                         pygame.display.flip()
-                        pygame.time.delay(150)  # 150ms Highlight-Zeit
+                        pygame.time.delay(150)  # 150ms Highlight-Zeit bis hierhin
 
 
                         fix_runtime_dir_permissions()  # Fix permissions before playing video
