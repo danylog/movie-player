@@ -108,9 +108,9 @@ while running:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             x, y = event.pos
 
- # --- Pumpkin gedrückt? => Bluetooth-Menü öffnen ---
-    if (WIDTH - 160) <= x <= (WIDTH - 10) and 10 <= y <= 160:
-        subprocess.Popen(["blueman-manager"])
+             # --- Pumpkin gedrückt? => Bluetooth-Menü öffnen ---
+            if (WIDTH - 160) <= x <= (WIDTH - 10) and 10 <= y <= 160:
+            subprocess.Popen(["blueman-manager"])
 
             
             # Double-tap exit from menu
