@@ -81,6 +81,7 @@ def fix_runtime_dir_permissions():
 running = True
 while running:
     screen.fill(PURPLE)
+    screen.blit(pumpkin_image, (WIDTH - 160, 10))  # z. B. oben rechts
 
     # --- Überschrift ---
     title = font.render("== Menü ==", True, YELLOW)
