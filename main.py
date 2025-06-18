@@ -5,24 +5,9 @@ import time
 import getpass
 
 
-# --- Bluetooth Auto-Connect ---
-def auto_connect_bluetooth():
-    try:
-        # Holt sich die zuletzt verbundene MAC-Adresse
-        output = subprocess.check_output("bluetoothctl paired-devices", shell=True).decode()
-        devices = [line.split()[-1] for line in output.strip().split("\n") if line.startswith("Device")]
-        if devices:
-            mac = devices[0]
-            print(f"Versuche zu verbinden mit: {mac}")
-            subprocess.call(f"bluetoothctl connect {mac}", shell=True)
-        else:
-            print("Keine gekoppelten Bluetooth-Geräte gefunden.")
-    except Exception as e:
-        print(f"Bluetooth-Verbindung fehlgeschlagen: {e}")
 
 # --- Setup ---asdjhra
 pygame.init()
-auto_connect_bluetooth()
 pumpkin_image = pygame.image.load("IMG_4041.PNG")
 pumpkin_image = pygame.transform.scale(pumpkin_image, (150, 150))
 WIDTH, HEIGHT = 640, 480  # Landscape
