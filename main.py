@@ -110,7 +110,7 @@ while running:
 
              # --- Pumpkin gedrückt? => Bluetooth-Menü öffnen ---
             if (WIDTH - 160) <= x <= (WIDTH - 10) and 10 <= y <= 160:
-            subprocess.Popen(["blueman-manager"])
+                subprocess.Popen(["blueman-manager"])
 
             
             # Double-tap exit from menu
