@@ -3,7 +3,7 @@ import os
 import subprocess
 import time
 import getpass
-import math  # Für Rotation
+
 
 
 
@@ -53,24 +53,6 @@ def double_tap_detected():
     last_tap_time = now
     return False
 
-# ---  LADEANIMATION Funktion ---
-def show_loading_animation():
-    global rotation_angle
-
-    overlay = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)
-    overlay.fill((0, 0, 0, 180))  # Leicht abdunkeln
-
-    # Ladebild skalieren & rotieren
-    img = pygame.image.load("IMG_4077.jpg").convert_alpha()
-    img = pygame.transform.scale(img, (200, 200))
-    rotated_img = pygame.transform.rotate(img, rotation_angle)
-    rect = rotated_img.get_rect(center=(WIDTH // 2, HEIGHT // 2))
-
-    screen.blit(overlay, (0, 0))
-    screen.blit(rotated_img, rect.topleft)
-
-    pygame.display.flip()
-    rotation_angle = (rotation_angle + 5) % 360
 
 
 
