@@ -3,6 +3,7 @@ import os
 import subprocess
 import time
 import getpass
+import math  # Für Rotation
 
 
 
@@ -24,6 +25,10 @@ WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 YELLOW = (255, 255, 0)
 PURPLE = (102, 0, 153) 
+
+selected_index = -1
+loading = False
+rotation_angle = 0
 
 # --- Filme laden ---
 VIDEO_FOLDER = "/home/pi/tvprojekt/videos"
@@ -47,6 +52,27 @@ def double_tap_detected():
         return True
     last_tap_time = now
     return False
+
+# ---  LADEANIMATION Funktion ---
+def show_loading_animation():
+    global rotation_angle
+
+    overlay = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)
+    overlay.fill((0, 0, 0, 180))  # Leicht abdunkeln
+
+    # Ladebild skalieren & rotieren
+    img = pygame.image.load("IMG_4077.jpg").convert_alpha()
+    img = pygame.transform.scale(img, (200, 200))
+    rotated_img = pygame.transform.rotate(img, rotation_angle)
+    rect = rotated_img.get_rect(center=(WIDTH // 2, HEIGHT // 2))
+
+    screen.blit(overlay, (0, 0))
+    screen.blit(rotated_img, rect.topleft)
+
+    pygame.display.flip()
+    rotation_angle = (rotation_angle + 5) % 360
+
+
 
 def play_video(filepath):
     proc = subprocess.Popen([
@@ -94,7 +120,10 @@ while running:
     start = current_page * videos_per_page
     end = start + videos_per_page
     for i, video in enumerate(videos[start:end]):
-        text = font.render(f"{i+1}. {video}", True, WHITE)
+        is_selected = (start + i == selected_index)
+        video_font = pygame.font.Font(None, 52 if is_selected else 42)
+        color = YELLOW if is_selected else WHITE
+        text = video_font.render(f"{i+1}. {video}", True, color)
         screen.blit(text, (100, 100 + i * 40))
 
     # --- Pfeile zeichnen (groß & touchbar) ---
@@ -134,6 +163,14 @@ while running:
                 if tx < x < WIDTH-60 and ty < y < ty + 40:
                     index = start + i
                     if index < len(videos):
+
+                         selected_index = index  # Für Highlight
+                        pygame.display.flip()
+                        pygame.time.wait(100)  # Kurz Highlight zeigen
+
+
+
+                        
                         filename = videos[index]
                         filepath = os.path.join(VIDEO_FOLDER, filename)
 
