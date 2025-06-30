@@ -6,7 +6,6 @@ import getpass
 
 
 
-
 # --- Setup ---asdjhra
 pygame.init()
 
@@ -25,7 +24,6 @@ WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 YELLOW = (255, 255, 0)
 PURPLE = (102, 0, 153) 
-
 
 # --- Filme laden ---
 VIDEO_FOLDER = "/home/pi/tvprojekt/videos"
@@ -49,9 +47,6 @@ def double_tap_detected():
         return True
     last_tap_time = now
     return False
-
-
-
 
 def play_video(filepath):
     proc = subprocess.Popen([
@@ -99,7 +94,7 @@ while running:
     start = current_page * videos_per_page
     end = start + videos_per_page
     for i, video in enumerate(videos[start:end]):
-       text = font.render(f"{i+1}. {video}", True, WHITE)
+        text = font.render(f"{i+1}. {video}", True, WHITE)
         screen.blit(text, (100, 100 + i * 40))
 
     # --- Pfeile zeichnen (groß & touchbar) ---
@@ -139,11 +134,6 @@ while running:
                 if tx < x < WIDTH-60 and ty < y < ty + 40:
                     index = start + i
                     if index < len(videos):
-
-                        
-
-
-                        
                         filename = videos[index]
                         filepath = os.path.join(VIDEO_FOLDER, filename)
 
