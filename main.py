@@ -130,19 +130,19 @@ while running:
 
             # Touch: Video auswählen
             for i in range(videos_per_page):
-                tx, ty = 60, 60 + i * 40
+                tx, ty = 100, 100 + i * 40
                 if tx < x < WIDTH-60 and ty < y < ty + 40:
                     index = start + i
                     if index < len(videos):
                         filename = videos[index]
                         filepath = os.path.join(VIDEO_FOLDER, filename)
 
-# --- Highlight angeklickten Text --- hab ich hinzugefügt
-                        highlight_text = font.render(f"{i+1}. {filename}", True, YELLOW)
-                        pygame.draw.rect(screen, PURPLE, (tx, ty, WIDTH-120, 40))  # Hintergrund säubern
-                        screen.blit(highlight_text, (tx, ty))
-                        pygame.display.flip()
-                        pygame.time.delay(150)  # 150ms Highlight-Zeit bis hierhin
+highlight_rect = pygame.Surface((WIDTH - 200, 40), pygame.SRCALPHA)
+highlight_rect.fill((255, 255, 0, 100))  # Gelb mit Alpha (transparenz)
+screen.blit(highlight_rect, (tx, ty))
+screen.blit(highlight_text, (tx, ty))
+pygame.display.flip()
+pygame.time.delay(150)
 
 
                         fix_runtime_dir_permissions()  # Fix permissions before playing video
