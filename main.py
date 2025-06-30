@@ -26,9 +26,6 @@ BLACK = (0, 0, 0)
 YELLOW = (255, 255, 0)
 PURPLE = (102, 0, 153) 
 
-selected_index = -1
-loading = False
-rotation_angle = 0
 
 # --- Filme laden ---
 VIDEO_FOLDER = "/home/pi/tvprojekt/videos"
