@@ -8,11 +8,15 @@ import getpass
 
 # --- Setup ---asdjhra
 pygame.init()
-pumpkin_image = pygame.image.load("IMG_4077.jpg")
-pumpkin_image = pygame.transform.scale(pumpkin_image, (150, 150))
+
 WIDTH, HEIGHT = 640, 480  # Landscape
 screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.FULLSCREEN | pygame.NOFRAME)
 pygame.display.set_caption("Mini TV Menü")
+
+# Hintergrundbild laden und auf Bildschirmgröße skalieren
+background_image = pygame.transform.scale(pygame.image.load("IMG_4077.jpg"), (WIDTH, HEIGHT))
+
+
 font = pygame.font.Font(None, 42)
 
 # --- Farben ---
@@ -81,8 +85,8 @@ def fix_runtime_dir_permissions():
 # --- Hauptloop ---
 running = True
 while running:
-    screen.fill(PURPLE)
-    screen.blit(pumpkin_image, (WIDTH - 160, 10))  # z. B. oben rechts
+    screen.blit(background_image, (0, 0))  # Hintergrundbild über den ganzen Screen
+   
 
     # --- Überschrift ---
     title = font.render("== Menü ==", True, YELLOW)
