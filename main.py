@@ -8,7 +8,7 @@ import getpass
 
 # --- Setup ---asdjhra
 pygame.init()
-pumpkin_image = pygame.image.load("IMG_4041.PNG")
+pumpkin_image = pygame.image.load("IMG_4077.jpg")
 pumpkin_image = pygame.transform.scale(pumpkin_image, (150, 150))
 WIDTH, HEIGHT = 640, 480  # Landscape
 screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.FULLSCREEN | pygame.NOFRAME)
