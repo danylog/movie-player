@@ -137,12 +137,6 @@ while running:
                         filename = videos[index]
                         filepath = os.path.join(VIDEO_FOLDER, filename)
 
-highlight_rect = pygame.Surface((WIDTH - 200, 40), pygame.SRCALPHA)
-highlight_rect.fill((255, 255, 0, 100))  # Gelb mit Alpha (transparenz)
-screen.blit(highlight_rect, (tx, ty))
-screen.blit(highlight_text, (tx, ty))
-pygame.display.flip()
-pygame.time.delay(150)
 
 
                         fix_runtime_dir_permissions()  # Fix permissions before playing video
