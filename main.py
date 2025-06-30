@@ -88,16 +88,14 @@ while running:
     screen.blit(background_image, (0, 0))  # Hintergrundbild über den ganzen Screen
    
 
-    # --- Überschrift ---
-    title = font.render("== Menü ==", True, YELLOW)
-    screen.blit(title, (WIDTH//2 - title.get_width()//2, 10))
+   
 
     # --- Videos anzeigen ---
     start = current_page * videos_per_page
     end = start + videos_per_page
     for i, video in enumerate(videos[start:end]):
         text = font.render(f"{i+1}. {video}", True, WHITE)
-        screen.blit(text, (60, 60 + i * 40))
+        screen.blit(text, (100, 100 + i * 40))
 
     # --- Pfeile zeichnen (groß & touchbar) ---
     pygame.draw.polygon(screen, WHITE, [(20, HEIGHT//2-40), (60, HEIGHT//2), (20, HEIGHT//2+40)])  # links
