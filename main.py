@@ -102,10 +102,7 @@ while running:
     start = current_page * videos_per_page
     end = start + videos_per_page
     for i, video in enumerate(videos[start:end]):
-        is_selected = (start + i == selected_index)
-        video_font = pygame.font.Font(None, 52 if is_selected else 42)
-        color = YELLOW if is_selected else WHITE
-        text = video_font.render(f"{i+1}. {video}", True, color)
+       text = font.render(f"{i+1}. {video}", True, WHITE)
         screen.blit(text, (100, 100 + i * 40))
 
     # --- Pfeile zeichnen (groß & touchbar) ---
@@ -146,10 +143,7 @@ while running:
                     index = start + i
                     if index < len(videos):
 
-                         selected_index = index  # Für Highlight
-                        pygame.display.flip()
-                        pygame.time.wait(100)  # Kurz Highlight zeigen
-
+                        
 
 
                         
