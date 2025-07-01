@@ -90,18 +90,12 @@ while running:
 
    
 
-  # --- Videos anzeigen mit Highlight ---
-mx, my = pygame.mouse.get_pos()
-start = current_page * videos_per_page
-end = start + videos_per_page
-for i, video in enumerate(videos[start:end]):
-    ty = 100 + i * 40  # Y-Position des Textes
-    if 100 < mx < WIDTH - 60 and ty < my < ty + 40:
-        color = YELLOW
-    else:
-        color = WHITE
-    text = font.render(f"{i+1}. {video}", True, color)
-    screen.blit(text, (100, ty)
+# --- Videos anzeigen ---
+    start = current_page * videos_per_page
+    end = start + videos_per_page
+    for i, video in enumerate(videos[start:end]):
+        text = font.render(f"{i+1}. {video}", True, WHITE)
+        screen.blit(text, (100, 100 + i * 40))
 
     # --- Pfeile zeichnen (groß & touchbar) ---
     pygame.draw.polygon(screen, WHITE, [(20, HEIGHT//2-40), (60, HEIGHT//2), (20, HEIGHT//2+40)])  # links
