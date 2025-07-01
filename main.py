@@ -141,13 +141,12 @@ while running:
 
                         fix_runtime_dir_permissions()  # Fix permissions before playing video
 
-# VISUELLES FEEDBACK HINZUFÜGEN
-            text = font.render(f"{i+1}. {filename}", True, YELLOW)
-            pygame.draw.rect(screen, BLACK, (tx, ty, WIDTH-120, 40))  # Clear previous text
-            screen.blit(text, (tx, ty))
-            pygame.display.flip()
-            pygame.event.pump()
-            time.sleep(0.3)  # 300ms warten, damit man’s sieht
+  # --- Videos anzeigen ---
+    start = current_page * videos_per_page
+    end = start + videos_per_page
+    for i, video in enumerate(videos[start:end]):
+        text = font.render(f"{i+1}. {video}", True, WHITE)
+        screen.blit(text, (100, 100 + i * 40))
                         
                         still_running = play_video(filepath)
                         if not still_running:
