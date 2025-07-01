@@ -5,18 +5,11 @@ import time
 import getpass
 
 
-
 # --- Setup ---asdjhra
 pygame.init()
-
 WIDTH, HEIGHT = 640, 480  # Landscape
 screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.FULLSCREEN | pygame.NOFRAME)
 pygame.display.set_caption("Mini TV Menü")
-
-# Hintergrundbild laden und auf Bildschirmgröße skalieren
-background_image = pygame.transform.scale(pygame.image.load("IMG_4077.jpg"), (WIDTH, HEIGHT))
-
-
 font = pygame.font.Font(None, 42)
 
 # --- Farben ---
@@ -85,17 +78,18 @@ def fix_runtime_dir_permissions():
 # --- Hauptloop ---
 running = True
 while running:
-    screen.blit(background_image, (0, 0))  # Hintergrundbild über den ganzen Screen
-   
+    screen.fill(PURPLE)
 
-   
+    # --- Überschrift ---
+    title = font.render("== Menü ==", True, YELLOW)
+    screen.blit(title, (WIDTH//2 - title.get_width()//2, 10))
 
-# --- Videos anzeigen ---
+    # --- Videos anzeigen ---
     start = current_page * videos_per_page
     end = start + videos_per_page
     for i, video in enumerate(videos[start:end]):
         text = font.render(f"{i+1}. {video}", True, WHITE)
-        screen.blit(text, (100, 100 + i * 40))
+        screen.blit(text, (60, 60 + i * 40))
 
     # --- Pfeile zeichnen (groß & touchbar) ---
     pygame.draw.polygon(screen, WHITE, [(20, HEIGHT//2-40), (60, HEIGHT//2), (20, HEIGHT//2+40)])  # links
@@ -111,8 +105,6 @@ while running:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             x, y = event.pos
 
-            
-            
             # Double-tap exit from menu
             if double_tap_detected():
                 running = False
@@ -130,25 +122,14 @@ while running:
 
             # Touch: Video auswählen
             for i in range(videos_per_page):
-                tx, ty = 100, 100 + i * 40
+                tx, ty = 60, 60 + i * 40
                 if tx < x < WIDTH-60 and ty < y < ty + 40:
                     index = start + i
                     if index < len(videos):
                         filename = videos[index]
                         filepath = os.path.join(VIDEO_FOLDER, filename)
-
-
-
                         fix_runtime_dir_permissions()  # Fix permissions before playing video
-
-  # --- Videos anzeigen ---
-    start = current_page * videos_per_page
-    end = start + videos_per_page
-    for i, video in enumerate(videos[start:end]):
-        text = font.render(f"{i+1}. {video}", True, WHITE)
-        screen.blit(text, (100, 100 + i * 40))
-                        
                         still_running = play_video(filepath)
                         if not still_running:
                             running = False
-                        break
+                        break 
