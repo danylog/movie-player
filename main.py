@@ -84,21 +84,18 @@ def fix_runtime_dir_permissions():
 
 # --- Hauptloop ---
 running = True
-selected_index = None  # merkt sich den aktuell ausgewählten Eintrag
 while running:
     screen.blit(background_image, (0, 0))  # Hintergrundbild über den ganzen Screen
    
 
    
 
-  # --- Videos anzeigen ---
-start = current_page * videos_per_page
-end = start + videos_per_page
-for i, video in enumerate(videos[start:end]):
-    index = start + i
-    color = YELLOW if index == selected_index else WHITE
-    text = font.render(f"{i+1}. {video}", True, color)
-    screen.blit(text, (100, 100 + i * 40))
+    # --- Videos anzeigen ---
+    start = current_page * videos_per_page
+    end = start + videos_per_page
+    for i, video in enumerate(videos[start:end]):
+        text = font.render(f"{i+1}. {video}", True, WHITE)
+        screen.blit(text, (100, 100 + i * 40))
 
     # --- Pfeile zeichnen (groß & touchbar) ---
     pygame.draw.polygon(screen, WHITE, [(20, HEIGHT//2-40), (60, HEIGHT//2), (20, HEIGHT//2+40)])  # links
@@ -139,8 +136,6 @@ for i, video in enumerate(videos[start:end]):
                     if index < len(videos):
                         filename = videos[index]
                         filepath = os.path.join(VIDEO_FOLDER, filename)
-                        selected_index = index
-                        pygame.display.flip()
 
 
 
