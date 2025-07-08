@@ -91,10 +91,10 @@ while running:
 
    
 
-    # --- Videos anzeigen ---
-    start = current_page * videos_per_page
-    end = start + videos_per_page
-   for i, video in enumerate(videos[start:end]):
+  # --- Videos anzeigen ---
+start = current_page * videos_per_page
+end = start + videos_per_page
+for i, video in enumerate(videos[start:end]):
     index = start + i
     color = YELLOW if index == selected_index else WHITE
     text = font.render(f"{i+1}. {video}", True, color)
