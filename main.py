@@ -94,11 +94,11 @@ while running:
     # --- Videos anzeigen ---
     start = current_page * videos_per_page
     end = start + videos_per_page
-    for i, video in enumerate(videos[start:end]):
-       index = start + i
+   for i, video in enumerate(videos[start:end]):
+    index = start + i
     color = YELLOW if index == selected_index else WHITE
     text = font.render(f"{i+1}. {video}", True, color)
-        screen.blit(text, (100, 100 + i * 40))
+    screen.blit(text, (100, 100 + i * 40))
 
     # --- Pfeile zeichnen (groß & touchbar) ---
     pygame.draw.polygon(screen, WHITE, [(20, HEIGHT//2-40), (60, HEIGHT//2), (20, HEIGHT//2+40)])  # links
