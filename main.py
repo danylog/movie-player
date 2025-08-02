@@ -13,6 +13,13 @@ WIDTH, HEIGHT = 640, 480  # Landscape
 screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.FULLSCREEN | pygame.NOFRAME)
 pygame.display.set_caption("Mini TV Menü")
 
+# --- Bluetooth-Icon laden und Position berechnen ---
+bt_icon_img = pygame.image.load("bluetooth-icon.png")  # lade dein Icon (z.B. 128×128 PNG)
+ICON_SIZE = 64
+bt_icon = pygame.transform.scale(bt_icon_img, (ICON_SIZE, ICON_SIZE))
+bt_rect = bt_icon.get_rect(center=(WIDTH//2, HEIGHT - ICON_SIZE - 20))
+
+
 # Hintergrundbild laden und auf Bildschirmgröße skalieren
 background_image = pygame.transform.scale(pygame.image.load("IMG_4077.jpg"), (WIDTH, HEIGHT))
 
