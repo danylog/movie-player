@@ -122,26 +122,17 @@ while running:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             x, y = event.pos
 
-            
+              # --- Klick auf Bluetooth-Icon? ---
+            if bt_rect.collidepoint(x, y):
+                # startet das Blueman-Manager-Fenster im Hintergrund
+                subprocess.Popen(["blueman-manager"])
+                continue  # zurück in die Hauptschleife, Animation läuft weiter
             
             # Double-tap exit from menu
             if double_tap_detected():
                 running = False
                 break
-
-        elif event.type == pygame.MOUSEBUTTONDOWN:
-            x, y = event.pos
-
-            # --- Klick auf Bluetooth-Icon? ---
-            if bt_rect.collidepoint(x, y):
-                # startet das Blueman-Manager-Fenster im Hintergrund
-                subprocess.Popen(["blueman-manager"])
-                continue  # zurück in die Hauptschleife, Animation läuft weiter
-
-            # --- Double-tap exit from menu ---
-            if double_tap_detected():
-                running = False
-                break
+          
 
             
             # Touch: Links (zurück)
