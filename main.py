@@ -14,11 +14,7 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.FULLSCREEN | pygame.NOF
 pygame.display.set_caption("Mini TV Menü")
 
 
-# --- Bluetooth-Icon laden und Position berechnen ---
-bt_icon_img = pygame.image.load("IMG_4077.jpg")  # lade dein Icon (z.B. 128×128 PNG)
-ICON_SIZE = 64
-bt_icon = pygame.transform.scale(bt_icon_img, (ICON_SIZE, ICON_SIZE))
-bt_rect = bt_icon.get_rect(center=(WIDTH//2, HEIGHT - ICON_SIZE - 20))
+
 
 
 # Hintergrundbild laden und auf Bildschirmgröße skalieren
@@ -109,8 +105,7 @@ while running:
     pygame.draw.polygon(screen, WHITE, [(20, HEIGHT//2-40), (60, HEIGHT//2), (20, HEIGHT//2+40)])  # links
     pygame.draw.polygon(screen, WHITE, [(WIDTH-20, HEIGHT//2-40), (WIDTH-60, HEIGHT//2), (WIDTH-20, HEIGHT//2+40)])  # rechts
 
-    # --- Bluetooth-Icon anzeigen ---
-    screen.blit(bt_icon, bt_rect)
+   
 
     pygame.display.flip()
 
@@ -122,11 +117,7 @@ while running:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             x, y = event.pos
 
-              # --- Klick auf Bluetooth-Icon? ---
-            if bt_rect.collidepoint(x, y):
-                # startet das Blueman-Manager-Fenster im Hintergrund
-                subprocess.Popen(["blueman-manager"])
-                continue  # zurück in die Hauptschleife, Animation läuft weiter
+           
             
             # Double-tap exit from menu
             if double_tap_detected():
